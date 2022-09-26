@@ -1,25 +1,21 @@
-body{
-    background-image: linear-gradient(#e66465, #9198e5);
-    background-attachment: fixed;
-    background-size: cover;
- }
+body {
+   background-image: linear-gradient(#e66465, #9198e5);
+   background-attachment: fixed;
+   background-size: cover;
+}
 
 .navbar-nav {
    margin-left: auto;
 }
 
-.btn{
+.btn {
    margin: 10px 20px 10px 10px;
 }
 
-.container{
+.container {
    margin-top: 15%;
 }
 
-h1{
+h1 {
    color: black;
 }
-
-
-
-

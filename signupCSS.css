@@ -1,0 +1,41 @@
+body {
+   background-image: linear-gradient(#e66465, #9198e5);
+   background-attachment: fixed;
+   background-size: cover;
+   line-height: 20%;
+   border: 0;
+   padding: 0;
+   margin: 50px;
+}
+
+div#centerpage {
+   margin-left: auto;
+   margin-right: auto;
+   width: 100%;
+   max-width: 885px;
+   height: auto;
+   padding: 40px;
+   border: 10px solid black;
+   ;
+   background-color: white;
+}
+
+header.banner {
+   background-color: skyblue;
+   height: 100px;
+
+}
+
+section#main {
+   overflow: hidden;
+   padding: 20px;
+}
+
+.forgot {
+   float: right;
+   padding-bottom: 20px;
+}
+
+p {
+   white-space: nowrap;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="createQuiz.css">
+
+    
+    <title>Game Quiz</title>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-custom "> 
+        <div class="navbar-nav mr-auto">
+            <form action="dashboard.html" method="GET">
+                <button class="btn btn-dark"><i class="bi bi-arrow-left"></i></button>
+            </form>
+        </div>
+        <div class="navbar-nav header">
+            <h1>Create Quiz</h1>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <form action="dashboard.html" method="GET">
+                <button class="btn-delete" id="deleteQuiz">Delete Quiz</button> <!--javascript functionality-->
+                </form>
+        </div>
+    </nav>
+
+   
+  
+    <div class="container-fluid">
+        <div class="input input-text"> <!--may need rewriting for data storage with javascsript-->
+            <input type="text" name="qz-title" id="qz-title" placeholder="#Quiz Title">
+        </div>
+        <div class="container"> <!--Where the cards are presented, javascript functionality to add more-->
+            <div class="card border-dark mb-3">
+               
+                <div class="card-title">Question: <button class="btn-delete" id="del-qs">Delete</button></div>
+                    <div class="inupt input-text" ><input type="textarea" name="question" id="card-question"></div>
+                    
+            
+                    <div class="card-body">
+                            <h5>Answer Selection:</h5>
+                            <div class="radio radio-group">
+                                <div class="qs-selection"><input type="radio" name="qs-selection"><input type="textarea" class="answer"></div>
+                                <div class="qs-selection"><input type="radio" name="qs-selection"><input type="textarea" class="answer"></div>
+                            </div>
+                            <button class="btn btn-add"><i class="bi bi-plus-circle"></i> Add selection</button> <!--javascript: to create another div with the radio and textarea input structure-->
+                    </div>
+
+            </div>
+            <button class="btn btn-add-card"><i class="bi bi-plus-circle"></i> Add Question</button> <!--javascript: to create a question card with the same default structure-->
+
+        </div>
+
+    </div>
+    
+ <script src="createScript.js"></script>
+</body>
+</html>

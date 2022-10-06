@@ -1,0 +1,102 @@
+
+/*linear gradient hex values: #e66465, #9198e5*/
+
+html{
+    min-height: 100%;
+}
+
+body{
+    background-image: linear-gradient(#e66465, #9198e5);
+    background-size:cover;
+}
+
+
+input[type=textarea]{
+    border-style: hidden;
+    border-radius: 8px;
+}
+
+input[type=text]{
+    border-style: hidden;
+}
+
+input[type=textarea].answer{
+    border-bottom-style: groove;
+    width: 40%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+.header{
+    margin-top: auto;
+}
+
+
+.container-fluid{
+    margin-top: 2em;
+    height: fit-content;
+}
+
+
+.card-body{
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-title{
+    font-size: xx-large;
+    margin-left:2%;
+}
+
+
+.btn-delete{
+    font-weight: bold;
+    color: #df142a;
+    background-color: white;
+    border: none;
+}
+
+.btn-dark{
+    margin-left:50%;
+}
+
+
+/*-------------------------------------------------------------------*/
+#qz-title{
+    font-size: xx-large; 
+    font-weight: 600;
+    background:transparent;
+    margin-bottom: 2em; 
+}
+
+#qz-title:focus{
+    outline: none !important;
+    border-color:#292b2c;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #292b2c;
+
+}
+
+ #del-qs{
+    float:right;
+    font-size: medium;
+    margin: 1em;
+}
+
+#deleteQuiz{
+    color: #292b2c;
+    background:none;
+    border-bottom-style:solid;
+}
+
+#card-question{
+   display:inline-block;
+   border-bottom-style: groove;
+   margin-left: 1em;
+   width: 80%; 
+
+}
+
+
+

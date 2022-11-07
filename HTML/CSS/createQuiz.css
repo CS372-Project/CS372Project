@@ -20,9 +20,13 @@ input[type=text]{
     border-style: hidden;
 }
 
+input[type=textarea].card-question{
+    border-bottom-style:groove ;
+}
+
 input[type=textarea].answer{
     border-bottom-style: groove;
-    width: 40%;
+    width: 55%;
     margin-left: 2%;
     margin-bottom: 2%;
 }
@@ -41,7 +45,6 @@ input[type=textarea].answer{
 .card-body{
     justify-content: center;
     align-items: center;
-
 }
 
 .card-title{
@@ -49,12 +52,23 @@ input[type=textarea].answer{
     margin-left:2%;
 }
 
+.card-question{
+    display:inline-block;
+    margin-left: 1em;
+    width: 80%; 
+}
 
 .btn-delete{
     font-weight: bold;
     color: #df142a;
     background-color: white;
     border: none;
+}
+
+.del-qs{
+    float:right;
+    font-size: medium;
+    margin: 1em;
 }
 
 .btn-dark{
@@ -78,25 +92,25 @@ input[type=textarea].answer{
 
 }
 
- #del-qs{
-    float:right;
-    font-size: medium;
-    margin: 1em;
-}
 
 #deleteQuiz{
     color: #292b2c;
     background:none;
     border-bottom-style:solid;
+    border: 2px dashed red;
 }
 
-#card-question{
-   display:inline-block;
-   border-bottom-style: groove;
-   margin-left: 1em;
-   width: 80%; 
-
+#saveQuiz{
+   
+    color: #292b2c;
+    font-weight: bold;
+    background:none;
+    border-style: none;
+    border-bottom-style:solid;
 }
+
+
+
 
 
 

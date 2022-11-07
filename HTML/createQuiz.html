@@ -24,6 +24,11 @@
         <div class="navbar-nav header">
             <h1>Create Quiz</h1>
         </div>
+        <div>
+            <form action="" method="post">
+                <button class="btn-save" id="saveQuiz">Save</button>
+            </form>
+        </div>
         <div class="navbar-nav ml-auto">
             <form action="" method="GET">
                 <!--javascript functionality-->
@@ -39,12 +44,12 @@
         </div>
         <div class="container">
             <!--Where the cards are presented, javascript functionality to add more-->
-            <div class="card border-dark mb-3">
+            <div class="card border-dark mb-3" id="q1">
                 <div class="card-title">
-                    Question: <button class="btn-delete" id="del-qs">Delete</button>
+                    Question: <button class="btn-delete del-qs" onclick="delete_Card(this)" >Delete</button>
                 </div>
                 <div class="inupt input-text">
-                    <input type="textarea" name="question" id="card-question" />
+                    <input type="textarea" name="question" class="card-question" />
                 </div>
 
                 <div class="card-body">
@@ -52,9 +57,11 @@
                     <div class="radio radio-group">
                         <div class="qs-selection">
                             <input type="radio" name="qs-selection" /><input type="textarea" class="answer" />
+                            <button class="btn btn-delete select"><i class="bi bi-x"></i></button>
                         </div>
                         <div class="qs-selection">
                             <input type="radio" name="qs-selection" /><input type="textarea" class="answer" />
+                            <button class="btn btn-delete select"><i class="bi bi-x"></i></button>
                         </div>
                     </div>
                     <button class="btn btn-add">
@@ -63,14 +70,14 @@
                     </button>
                 </div>
             </div>
-            <button class="btn btn-add-card">
+            <button class="btn btn-add-card" id="add-question">
                 <i class="bi bi-plus-circle"></i> Add Question
                 <!--javascript: to create a question card with the same default structure-->
             </button>
         </div>
     </div>
 
-    <script src="createScript.js"></script>
+    <script defer  type="text/javascript" src="/JavaScript/createQuiz.js"></script>
 </body>
 
 </html>

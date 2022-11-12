@@ -57,14 +57,14 @@
                     <div class="radio radio-group">
                         <div class="qs-selection">
                             <input type="radio" name="qs-selection" /><input type="textarea" class="answer" />
-                            <button class="btn btn-delete select"><i class="bi bi-x"></i></button>
+                            <button class="btn btn-delete select" onclick="delete_selection(this)"><i class="bi bi-x"></i></button>
                         </div>
                         <div class="qs-selection">
                             <input type="radio" name="qs-selection" /><input type="textarea" class="answer" />
-                            <button class="btn btn-delete select"><i class="bi bi-x"></i></button>
+                            <button class="btn btn-delete select" onclick="delete_selection(this)"><i class="bi bi-x"></i></button>
                         </div>
                     </div>
-                    <button class="btn btn-add">
+                    <button class="btn btn-add" onclick="add_selection(this)">
                         <i class="bi bi-plus-circle"></i> Add selection
                         <!--javascript: to create another div with the radio and textarea input structure-->
                     </button>

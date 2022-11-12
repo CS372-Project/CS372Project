@@ -52,7 +52,7 @@ db.collection('users').insertOne(data,function(err, collection){
               
     });
           
-    return res.redirect('signup_success.html');
+    return res.redirect('dashboard.html');
 })
   
   

@@ -8,7 +8,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="../CSS/userCSS.css" >
+  <link rel="stylesheet" type="text/css" href="../CSS/userCSS.css">
+
+  <script type="text/javascript" src="../JavaScript/login.js"></script>
 
   <title>Log In to Game Quiz</title>
 </head>
@@ -24,17 +26,19 @@
     </header>
 
     <section id="main">
-      <form action="DashBoard.html" method="POST">
+      <form name="LoginForm" action="DashBoard.html" method="POST" onsubmit="return validateLoginForm();">
         <div class="mb-md-2 mt-md-2 ">
 
           <div class="form-outline form-white mb-4">
             <label class="form-label h5 " for="email">Email Address: </label>
-            <input type="email" id="emailID" placeholder="Enter Email Address" class="form-control form-control-lg" />
+            <input type="email" id="emailID" name="emailID" placeholder="Enter Email Address"
+              class="form-control form-control-lg" />
           </div>
 
           <div class="form-outline form-white mb-5">
             <label class="form-label h5" for="password">Password:</label>
-            <input type="password" id="passwordID" placeholder="Enter Password" class="form-control form-control-lg" />
+            <input type="password" id="passwordID" name="passwordID" placeholder="Enter Password"
+              class="form-control form-control-lg" />
           </div>
 
           <p class="forgot"><a class="text-dark" href="forgotPassword.html">Forgot password?</a></p>

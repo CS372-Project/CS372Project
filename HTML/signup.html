@@ -11,6 +11,10 @@
 
     <link rel="stylesheet" type="text/css" href="../CSS/userCSS.css" >
 
+    <script type="text/javascript" src="../JavaScript/signup.js"></script>
+
+
+
 
   <title>Sign up for Game Quiz</title>
 </head>
@@ -26,45 +30,46 @@
     </header>
 
     <section id="main">
-      <form action="DashBoard.html" method="POST">
+      <form name="registerForm" action="DashBoard.html" method="POST" onsubmit="return validateRegisterForm();">
         <div class="mb-md-2 mt-md-2 ">
           <div class="row form-outline form-white mb-4">
             <div class="col">
-              <label class="form-label h5 " for="email">First Name: </label>
-              <input type="text" class="form-control form-control-lg" id="firstname"
+              <label class="form-label h5 " for="firstName">First Name: </label>
+              <input type="text" class="form-control form-control-lg" id="firstname" name="firstname"
                 placeholder="Enter your first name">
             </div>
 
             <div class="col">
-              <label class="form-label h5 " for="email">Last Name: </label>
-              <input type="text" class="form-control form-control-lg" id="lastname" placeholder="Enter your last name">
+              <label class="form-label h5 " for="lastName">Last Name: </label>
+              <input type="text" class="form-control form-control-lg" id="lastname" name="lastname" placeholder="Enter your last name">
             </div>
           </div>
 
           <div class="row form-outline form-white mb-4">
             <div class="col">
-              <label class="form-label h5 " for="email">Phone Number: </label>
-              <input type="text" class="form-control form-control-lg" id="phonenumber"
+              <label class="form-label h5 " for="phone">Phone Number: </label>
+              <input type="text" class="form-control form-control-lg" id="phonenumber" name="phonenumber" 
                 placeholder="Enter your phone number">
             </div>
 
             <div class="col">
               <label class="form-label h5 " for="email">Email Address: </label>
-              <input type="email" id="emailID" class="form-control form-control-lg"
+              <input type="email" id="emailID" name="emailID" class="form-control form-control-lg"
                 placeholder="Enter your email eddress">
             </div>
           </div>
 
           <div class="row form-outline form-white mb-5">
             <div class="col">
-              <label class="form-label h5 " for="email">Password: </label>
-              <input type="password" id="passwordID" class="form-control form-control-lg"
+              <label class="form-label h5 " for="password">Password: </label>
+              <input type="password" id="passwordID" name="passwordID" class="form-control form-control-lg"
                 placeholder="Enter a password">
             </div>
 
             <div class="col">
-              <label class="form-label h5 " for="email"> Confirm Password: </label>
-              <input type="password" id="passwordConfirmID" class="form-control form-control-lg"
+              <label class="form-label h5 " for="confirmPassword"> Confirm Password: </label>
+              <input type="password" id="passwordConfirmID"
+              name="passwordConfirmID"  class="form-control form-control-lg"
                 placeholder="Re-enter the password">
             </div>
           </div>

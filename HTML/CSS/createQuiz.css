@@ -10,7 +10,6 @@ body{
     background-size:cover;
 }
 
-
 input[type=textarea]{
     border-style: hidden;
     border-radius: 8px;
@@ -97,7 +96,7 @@ input[type=textarea].answer{
     color: #292b2c;
     background:none;
     border-bottom-style:solid;
-    border: 2px dashed red;
+    
 }
 
 #saveQuiz{

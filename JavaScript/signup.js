@@ -34,6 +34,7 @@ const validateRegisterForm = () => {
         alert("Password and Confirm Password must match")
         return false;
       };
+
 };
 
 

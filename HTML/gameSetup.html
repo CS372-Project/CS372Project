@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Quiz Title</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../CSS/gameSetup.css">
+
+</head>
+
+<body>
+    <!--========================================= CODE FROM dashboard.html ======================================================================-->
+    <!-- Displays sidebar and page header-->
+    <div class="wrapper">
+
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Game Quiz</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="DashBoard.html">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Settings</a>
+                </li>
+                <li>
+                    <a href="login.html">Logout</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+
+                    </button>
+
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <ul class="nav navbar-nav ml-auto"></ul>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+            <!--======================================================== NEW CODE ===============================================================-->
+            <!-- Displays Quiz Setup-->
+
+            <!-- Container to hold quiz functions (Text and Buttons).  -->
+            <div class="quizContainer">
+
+                <!-- Displaying the title of the quiz. -->
+                <h4>Quiz Title </h4>
+
+                <!-- Container to hold the question and four answer buttons.  -->
+                <div id="question-container" class="hide">
+
+                    <!-- Lists the question for the user to answer.  -->
+                    <div id="question">Question</div>
+
+                    <!-- Buttons to give the user four choices to answer a question.  -->
+                    <div id="answer-buttons" class="btn-grid">
+
+                        <button id="btnOne" class="answer-buttons">Answer 1</button><br>
+                        <button id="btnTwo" class="answer-buttons">Answer 2</button><br>
+                        <button id="btnThree" class="answer-buttons">Answer 3</button><br>
+                        <button id="btnFour" class="answer-buttons">Answer 4</button><br>
+
+                    </div>
+
+                </div>
+
+                <!-- Class to hold quiz controls (Start and Next.)  -->
+                <div class="controls">
+
+                    <!-- Buttons to let the user start the quiz and go to the next question  -->
+                    <div id="control-buttons" class="btn-grid">
+
+                        <button id="btnStart" class="control-buttons">Start</button>
+                        <button id="btnNext" class="control-buttons">Next</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

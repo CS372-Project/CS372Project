@@ -1,7 +1,5 @@
 var express = require("express")
 var bodyParser = require("body-parser")
-
-
 const app = express()
 
 const dotenv = require('dotenv');
@@ -11,7 +9,7 @@ app.use(bodyParser.json())
 app.use(express.static('../HTML'))
 
 app.use(bodyParser.urlencoded({
-    extended:true
+    extended: true
 }))
 
 const mongodb = require('mongodb')
@@ -21,54 +19,54 @@ const MongoClient = mongodb.MongoClient
 const url = process.env.url;
 
 // Use connect method to connect to the Server
-MongoClient.connect(url, 
-  {useUnifiedTopology: true}, 
-  (err, client) => {
-  if (err) 
-    return process.exit(1)
-  
-  console.log('Kudos. Connected successfully to server')
-  
-  let db = client.db('gameQuiz')
-  
-  
+MongoClient.connect(url,
+    { useUnifiedTopology: true },
+    (err, client) => {
+        if (err)
+            return process.exit(1)
 
-  app.post('/signup', function(req,res){
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
-    var phonenumber =req.body.phonenumber;
-    var emailID =req.body.emailID;
-    var passwordID = req.body.passwordID;
-    
-  
-    var data = {
-        "firstname": firstname,
-        "lastname": lastname,
-        "phonenumber":phonenumber,
-        "emailID":emailID,
-        "passwordID":passwordID
-       
-    }
-db.collection('users').insertOne(data,function(err, collection){
-        if (err) throw err;
-        console.log("Record inserted Successfully");
-              
-    });
-          
-    return res.redirect('dashboard.html');
-})
-  
-  
-app.get('/',function(req,res){
-res.set({
-    'Access-control-Allow-Origin': '*'
-    });
-return res.redirect('signup.html');
-}).listen(3000)
-  
-  
-console.log("server listening at port 3000");
+        console.log('Kudos. Connected successfully to server')
+
+        let db = client.db('gameQuiz')
 
 
 
-})
+        app.post('/signup', function (req, res) {
+            var firstname = req.body.firstname;
+            var lastname = req.body.lastname;
+            var phonenumber = req.body.phonenumber;
+            var emailID = req.body.emailID;
+            var passwordID = req.body.passwordID;
+
+
+            var data = {
+                "firstname": firstname,
+                "lastname": lastname,
+                "phonenumber": phonenumber,
+                "emailID": emailID,
+                "passwordID": passwordID
+
+            }
+            db.collection('users').insertOne(data, function (err, collection) {
+                if (err) throw err;
+                console.log("Record inserted Successfully");
+
+            });
+
+            return res.redirect('dashboard.html');
+        })
+
+
+        app.get('/', function (req, res) {
+            res.set({
+                'Access-control-Allow-Origin': '*'
+            });
+            return res.redirect('signup.html');
+        }).listen(3000)
+
+
+        console.log("server listening at port 3000");
+
+
+
+    })

@@ -1,72 +1,80 @@
-var express = require("express")
-var bodyParser = require("body-parser")
+const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
 const dotenv = require('dotenv');
 dotenv.config({ path: './.env' });
 
-app.use(bodyParser.json())
-app.use(express.static('../HTML'))
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
-
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
-
-// Connection URI
 const url = process.env.url;
 
-// Use connect method to connect to the Server
-MongoClient.connect(url,
-    { useUnifiedTopology: true },
-    (err, client) => {
-        if (err)
-            return process.exit(1)
 
-        console.log('Kudos. Connected successfully to server')
+const port = process.env.PORT || 3000
 
-        let db = client.db('gameQuiz')
+app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(express.static('../HTML'))
 
-
-        app.post('/signup', function (req, res) {
-            var firstname = req.body.firstname;
-            var lastname = req.body.lastname;
-            var phonenumber = req.body.phonenumber;
-            var emailID = req.body.emailID;
-            var passwordID = req.body.passwordID;
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => {
+    console.log(`CONNECTED TO MONGO!`);
+    app.listen(port);
+    console.log("listening on port 3000")
+})
+.catch((err) => {
+    console.log(`OH NO! MONGO CONNECTION ERROR!`);
+    console.log(err);
+})
 
 
-            var data = {
-                "firstname": firstname,
-                "lastname": lastname,
-                "phonenumber": phonenumber,
-                "emailID": emailID,
-                "passwordID": passwordID
+app.use(express.static('HTML'));
+const User = require('./models/user')
 
-            }
-            db.collection('users').insertOne(data, function (err, collection) {
-                if (err) throw err;
-                console.log("Record inserted Successfully");
+app.post("/signup", function (req, res) {
+console.log(req.body.firstname)
+console.log(req.body.lastname)
+console.log(req.body.phonenumber)
+console.log(req.body.emailID)
+console.log(req.body.passwordID)
 
-            });
+ const user = new User({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    phonenumber: req.body.phonenumber, 
+    emailID: req.body.emailID, 
+    passwordID: req.body.passwordID
+    });
 
-            return res.redirect('dashboard.html');
-        })
-
-
-        app.get('/', function (req, res) {
-            res.set({
-                'Access-control-Allow-Origin': '*'
-            });
-            return res.redirect('signup.html');
-        }).listen(3000)
-
-
-        console.log("server listening at port 3000");
-
-
-
+    user.save()
+    .then((user)=>{
+        console.log(user)
+        res.redirect('dashboard.html');
+        res.end("")
+        
+   
     })
+    .catch((err)=>{
+        console.log(err);
+        res.redirect('error.html')
+        
+    })
+    
+});
+
+
+app.get("/", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('signup.html');
+
+});
+
+
+app.get("/signup", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('signup.html');
+
+});

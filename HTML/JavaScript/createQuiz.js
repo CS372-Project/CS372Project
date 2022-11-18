@@ -1,15 +1,9 @@
-
 /*list of functionalities
-
 delete question card - deletes the full question card
-
 add selection - adds radio, textarea, and delete selection button
-
 delete selection - deletes the full selection (radio and textarea)
-
 add question - adds question card with deault structure (question(text), selection(two preset selections true and false), and with delete question card, delete
 selection, and add selection buttons)
-
 */
 
 //card border-dark mb-3

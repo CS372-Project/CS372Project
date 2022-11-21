@@ -28,7 +28,8 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
 
 
 app.use(express.static('HTML'));
-const User = require('./models/user')
+const User = require('./models/user');
+const e = require('express');
 
 app.post("/signup", function (req, res) {
 console.log(req.body.firstname)
@@ -61,12 +62,40 @@ console.log(req.body.passwordID)
     
 });
 
+app.post("/login", function (req, res) {
+    var emailID = req.body.emailID;
+    var passwordID = req.body.passwordID;
+
+    console.log(emailID);
+    console.log(passwordID);
+  
+    
+   User.findOne({emailID: emailID, passwordID: passwordID}, function(err, user){
+
+    if(err){
+        console.log(err);
+        
+    }
+    if(!user){
+        return res.redirect('error2.html');
+        
+       
+    }
+    else if(user){
+        return res.redirect('dashboard.html');
+    }
+   })
+       
+        
+});
+    
+
 
 app.get("/", function (req, res) {
     res.set({
         'Access-control-Allow-Origin': '*'
     });
-    return res.redirect('signup.html');
+    return res.redirect('welcomePage.html');
 
 });
 
@@ -76,5 +105,13 @@ app.get("/signup", function (req, res) {
         'Access-control-Allow-Origin': '*'
     });
     return res.redirect('signup.html');
+
+});
+
+app.get("/login", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('login.html');
 
 });

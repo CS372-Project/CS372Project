@@ -50,7 +50,7 @@ describe('Deleting a User', () => {
     //This is a test that reads user from database in user collection to see if user is in database. 
     describe('Reading Details of User', () => {
         request(app)
-        it('Finds user with the name', (done) => {
+        it('Finds user with the email', (done) => {
             User.findOne({
                 emailID: 'sincdl02@pfw.edu'
             
@@ -65,7 +65,7 @@ describe('Deleting a User', () => {
         //This is a test that reads user from database in user collection to see if user is in database. 
         describe('Reading Details of User', () => {
             request(app)
-            it('Finds user with the name', (done) => {
+            it('Finds user with the email', (done) => {
                 User.findOne({
                     emailID: 'test@gmail.com'
                 
@@ -79,7 +79,7 @@ describe('Deleting a User', () => {
 
     describe("Updating Details of User", () => {
         request(app)
-        it('Finds user with the name', (done) => {
+        it('Updating user with the name', (done) => {
             const filter = { emailID: 'sincdl02@pfw.edu' };
             const update = { firstname: 'Ayshia' };
             

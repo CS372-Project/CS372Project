@@ -21,7 +21,3 @@ function previewFile(){
         reader.readAsDataURL(file);
     }
 }
-
-// $("img[id='photo-image1']").click(function() {
-//     $("input[id='file']").click();
-// });

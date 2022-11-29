@@ -69,7 +69,6 @@ span {
     text-align: center;
 }
 
-
 #sidebar.active .sidebar-header {
     display: block;
 }
@@ -110,6 +109,9 @@ span {
    background: black;
 }
 
+img {
+    max-width:100%;
+}
 
 
 #sidebar ul.components {

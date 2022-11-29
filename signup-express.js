@@ -11,7 +11,7 @@ const url = process.env.url;
 
 const port = process.env.PORT || 3000
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static('../HTML'))
 
@@ -31,7 +31,23 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.static('HTML'));
 const User = require('./models/user');
-const e = require('express');
+const Quiz = require('./models/quiz')
+//const e = require('express');
+//HTML\createQuiz.html
+app.post("/HTML/createQuiz.html", function (req, res) {
+    console.log("got to the app")
+    if (req.body.signal === 'saving') {
+        console.log("saving to database")
+        console.log(req.body)
+    }
+    else {
+        console.log("deleting from database")
+        console.log(req.body)
+    }
+
+    return res.redirect("dashboard.html")
+
+})
 
 app.post("/signup", function (req, res) {
     console.log(req.body.firstname)
@@ -93,6 +109,15 @@ app.post("/login", function (req, res) {
 
 
 
+
+// app.get("/createQuiz", (req, res) => {
+//     console.log("going to creaet through get request")
+//     res.redirect("createQuiz.html")
+// })
+
+
+
+
 app.get("/", function (req, res) {
     res.set({
         'Access-control-Allow-Origin': '*'
@@ -117,3 +142,4 @@ app.get("/login", function (req, res) {
     return res.redirect('login.html');
 
 });
+

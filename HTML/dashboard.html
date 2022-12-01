@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="CSS/dashboard.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -50,6 +50,11 @@
                 <h3>Game Quiz</h3>
             </div>
             <ul class="list-unstyled components">
+                <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7jQPameD633rQUVhrvSydfTvWY5HT16mhSA&usqp=CAU" id="photo-image1" onclick="clickPicture()">
+                    <input type="file" id="file"  onchange="previewFile()" style="display: none;">
+                    <label for="file" id="uploadBtn"></label>
+                </li>
                 <li>
                     <a href="dashboard.html">Dashboard</a>
                 </li>

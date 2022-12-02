@@ -133,3 +133,24 @@ app.get("/play", function (req, res) {
     return res.redirect('play.html');
 
 });
+
+app.post("/play", function (req, res) {
+    var title = req.body.title;
+ 
+    console.log(title);
+
+    Quiz.findOne({ title: title}, function (err, user) {
+
+        if (err) {
+            console.log(err);
+
+        }
+        if (!quiz) {
+            alert("Quiz not found. Try typing in another title");
+        }
+        else if (quiz) {
+            return res.redirect('gameSetup.html');
+        }
+    })
+
+});

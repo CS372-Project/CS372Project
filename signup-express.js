@@ -31,6 +31,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.static('HTML'));
 const User = require('./models/user');
+const Quiz = require('./models/quiz');
 const e = require('express');
 
 app.post("/signup", function (req, res) {
@@ -139,14 +140,17 @@ app.post("/play", function (req, res) {
  
     console.log(title);
 
-    Quiz.findOne({ title: title}, function (err, user) {
+    Quiz.findOne({ title: title}, function (err, quiz) {
 
         if (err) {
             console.log(err);
 
         }
         if (!quiz) {
-            alert("Quiz not found. Try typing in another title");
+          
+            return res.redirect('play.html');
+            
+
         }
         else if (quiz) {
             return res.redirect('gameSetup.html');

@@ -5,4 +5,3 @@ const validateGuestForm = () => {
       return false;
     };
   };
-  

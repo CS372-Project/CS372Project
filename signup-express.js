@@ -31,6 +31,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.static('HTML'));
 const User = require('./models/user');
+const Quiz = require('./models/quiz');
 const e = require('express');
 
 app.post("/signup", function (req, res) {
@@ -91,6 +92,23 @@ app.post("/login", function (req, res) {
 
 });
 
+app.post("/dashboard", function (req, res) {
+    Quiz.find({}, function (err, quizes) {
+
+        if (err) {
+            console.log(err);
+        }
+        // let games = [{title:"AGame", link:"https://www.google.com/", creator:"Mr. A"},{title:"BGame", link:"https://www.youtube.com/", creator:"Mr. B"}];
+        let games = [];
+        for (let index = 0; index < quizes.length; index++) {
+            const quiz = quizes[index];
+            games.push({title: quiz.title, link:"https://www.google.com/", creator:quiz.creator});//TODO
+            // games.push({title: quiz.title, link:"/quiz/"+quiz.ID, creator:quiz.creator});
+        }
+        return games;
+    })
+});
+
 
 
 app.get("/", function (req, res) {
@@ -115,5 +133,13 @@ app.get("/login", function (req, res) {
         'Access-control-Allow-Origin': '*'
     });
     return res.redirect('login.html');
+
+});
+
+app.get("/dashboard", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('dashboard.html');
 
 });

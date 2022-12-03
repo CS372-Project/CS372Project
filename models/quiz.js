@@ -16,7 +16,6 @@ const quizSchema = new Schema({
         type: String,
         required: true
     }
-
 }, 
 { timestamps: true },
 {collection: 'quizzes'}

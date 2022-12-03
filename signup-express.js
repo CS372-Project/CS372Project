@@ -150,3 +150,44 @@ app.get("/login", function (req, res) {
 
 });
 
+
+app.get("/gameSetup", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('gameSetup.html');
+
+});
+
+app.get("/play", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('play.html');
+
+});
+
+
+app.post("/play", function (req, res) {
+    var title = req.body.title;
+ 
+    console.log(title);
+
+    Quiz.findOne({ title: title}, function (err, quiz) {
+
+        if (err) {
+            console.log(err);
+
+        }
+        if (!quiz) {
+          
+            return res.redirect('play.html');
+            
+
+        }
+        else if (quiz) {
+            return res.redirect('gameSetup.html');
+        }
+    })
+
+});

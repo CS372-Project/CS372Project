@@ -1,4 +1,6 @@
 
+
+
 const save = document.getElementById('saveQuiz')
 save.addEventListener('submit', sendQuiz)
 
@@ -30,8 +32,10 @@ function delQuiz() {
 
     let form = document.forms['del']
 
+
     let flag = validateTitle()
     getCreator(form)
+
     if (flag === false) return false
     else {
         title.setAttribute('form', 'del')
@@ -40,10 +44,12 @@ function delQuiz() {
 }
 
 
+
 async function getCreator(f) {
     return new Promise(() => {
         let CREATOR = document.createElement('input')
         let SIGNAL = document.createElement('input')
+
         if (f.id === "del") {
             CREATOR.setAttribute('form', 'del')
             SIGNAL.setAttribute("form", 'del')
@@ -54,6 +60,7 @@ async function getCreator(f) {
             SIGNAL.setAttribute("form", 'saving')
             SIGNAL.setAttribute("value", 'saving')
         }
+
 
         if (!f['creator']) {
             CREATOR.setAttribute('type', 'hidden')
@@ -76,6 +83,7 @@ function validateTitle() {
     return false
 
 }
+
 
 
 

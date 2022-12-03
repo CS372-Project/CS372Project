@@ -80,7 +80,7 @@ function add_card() {
 
   //creates checkbox group
   var q_selection_group = document.createElement("div")
-  q_selection_group.className = "radio radio-group"
+  q_selection_group.className = "form-check"
 
   //add default two selections to the card
   for (var i = 0; i < 2; i++) {
@@ -122,10 +122,10 @@ function add_selection(e) {
   var group;
   selection = document.createElement("div")
   selection.className = 'qs-selection'
-
   check = document.createElement("input")
   check.type = "radio"
   check.name = `group`
+
   check.setAttribute("form", "saving")
 
   input = document.createElement("input")
@@ -147,6 +147,7 @@ function add_selection(e) {
 
   //  checks where the call is coming from
   if (e.className === "radio radio-group") {
+
     e.appendChild(selection)
   }
   else {

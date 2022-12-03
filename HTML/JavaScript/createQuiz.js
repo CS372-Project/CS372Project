@@ -39,7 +39,9 @@ function add_card() {
   var q_text_input = document.createElement("input")
   q_text_input.className = "card-question"
   q_text_input.type = "textarea"
-  q_text_input.name = "question"
+  // q_text_input.name = "question"
+  q_text_input.setAttribute("form", "saving")
+  q_text_input.setAttribute("name", "question")
 
   //adds div container to hold answer selection
   var q_body = document.createElement("div")
@@ -47,9 +49,9 @@ function add_card() {
   var selection_header = document.createElement("h5")
   selection_header.innerText = "Answer Selection:"
 
-  //creates radio group
+  //creates checkbox group
   var q_selection_group = document.createElement("div")
-  q_selection_group.className = "radio radio-group"
+  q_selection_group.className = "form-check"
 
   //add default two selections to the card
   for (var i = 0; i < 2; i++) {
@@ -80,23 +82,26 @@ function add_card() {
 
 function add_selection(e) {
   var selection
-  var radio
+  var check
   var input
   var btn
   var i
   var x = e.parentNode
   var group;
-
   selection = document.createElement("div")
-  selection.className = "qs-selection"
+  selection.className = 'qs-selection'
+  //console.log(e.parentNode.children)
 
-  radio = document.createElement("input")
-  radio.type = "radio"
-  radio.name = "qs-selection"
+  check = document.createElement("input")
+  check.type = "checkbox"
+  check.name = `qs-selection`
+  check.setAttribute("form", "saving")
 
   input = document.createElement("input")
   input.className = "answer"
   input.type = "textarea"
+  input.setAttribute("form", "saving")
+  input.setAttribute("name", "selection")
 
   btn = document.createElement("button")
   btn.className = "btn btn-delete select"
@@ -105,12 +110,12 @@ function add_selection(e) {
   i.className = "bi bi-x"
 
   btn.append(i)
-  selection.append(radio)
+  selection.append(check)
   selection.appendChild(input)
   selection.appendChild(btn)
 
-  //checks where the call is coming from
-  if (e.className === "radio radio-group") {
+  //  checks where the call is coming from
+  if (e.className === "form-check") {
     e.appendChild(selection)
   }
   else {

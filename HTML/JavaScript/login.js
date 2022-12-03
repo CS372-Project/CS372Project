@@ -9,8 +9,12 @@ const validateLoginForm = () => {
     alert("Password field cannot be empty")
     return false;
   };
+  setSession(emailData);
 };
 
+async function setSession(e) {
+  window.sessionStorage.setItem("email", e);
+};
 
 
 

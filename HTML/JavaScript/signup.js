@@ -34,8 +34,12 @@ const validateRegisterForm = () => {
     alert("Password and Confirm Password must match")
     return false;
   };
+  setSession(emailData)
 };
 
+async function setSession(e) {
+  window.sessionStorage.setItem("email", e);
+};
 
 
 

@@ -4,4 +4,7 @@ const validateGuestForm = () => {
       alert('Please input game quiz title.')
       return false;
     };
+
   };
+  
+

@@ -58,12 +58,13 @@ app.post("/HTML/createQuiz.html", function (req, res) {
             })
     }
     else {
-        let filter = [{ title: `${quiz_body.title}` }, { creator: `${quiz_body.creator}` }]
+        let filter = { title: `${quiz_body.title}`, creator: `${quiz_body.creator}` }
         Quiz.findOneAndDelete(filter, function (err, doc) {
             if (err) console.log(err)
             else console.log("Deleted Quiz: ", doc)
+            res.redirect("dashboard.html")
         })
-        res.redirect("dashboard.html")
+
     }
 
 })
@@ -170,19 +171,19 @@ app.get("/play", function (req, res) {
 
 app.post("/play", function (req, res) {
     var title = req.body.title;
- 
+
     console.log(title);
 
-    Quiz.findOne({ title: title}, function (err, quiz) {
+    Quiz.findOne({ title: title }, function (err, quiz) {
 
         if (err) {
             console.log(err);
 
         }
         if (!quiz) {
-          
+
             return res.redirect('play.html');
-            
+
 
         }
         else if (quiz) {

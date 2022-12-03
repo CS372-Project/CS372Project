@@ -143,3 +143,10 @@ app.get("/login", function (req, res) {
 
 });
 
+app.get("/gameSetup", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('gameSetup.html');
+
+});

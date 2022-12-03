@@ -226,3 +226,18 @@ a.article:hover {
         display: none;
     }
 }
+
+#gameQuiz div{
+    margin-top: 10px;
+    margin-left: 10px;
+    border:  1px solid rgb(0, 0, 0);
+}
+
+#gameQuiz a{
+    font-size: 20px;
+}
+
+#gameQuiz h4{
+    margin-right: 7px;
+    text-align: right;
+}

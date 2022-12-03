@@ -98,7 +98,6 @@ app.post("/dashboard", function (req, res) {
         if (err) {
             console.log(err);
         }
-        // let games = [{title:"AGame", link:"https://www.google.com/", creator:"Mr. A"},{title:"BGame", link:"https://www.youtube.com/", creator:"Mr. B"}];
         let games = [];
         for (let index = 0; index < quizes.length; index++) {
             const quiz = quizes[index];

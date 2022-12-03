@@ -31,7 +31,8 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.static('HTML'));
 const User = require('./models/user');
-const Quiz = require('./models/quiz')
+
+const Quiz = require('./models/quiz');
 //const e = require('express');
 //HTML\createQuiz.html
 app.post("/HTML/createQuiz.html", function (req, res) {
@@ -149,7 +150,6 @@ app.get("/gameSetup", function (req, res) {
     });
     return res.redirect('gameSetup.html');
 
-
 });
 
 app.get("/play", function (req, res) {
@@ -157,6 +157,31 @@ app.get("/play", function (req, res) {
         'Access-control-Allow-Origin': '*'
     });
     return res.redirect('play.html');
+
+});
+
+
+app.post("/play", function (req, res) {
+    var title = req.body.title;
+ 
+    console.log(title);
+
+    Quiz.findOne({ title: title}, function (err, quiz) {
+
+        if (err) {
+            console.log(err);
+
+        }
+        if (!quiz) {
+          
+            return res.redirect('play.html');
+            
+
+        }
+        else if (quiz) {
+            return res.redirect('gameSetup.html');
+        }
+    })
 
 });
 

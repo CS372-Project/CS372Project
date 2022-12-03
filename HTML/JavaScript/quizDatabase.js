@@ -11,23 +11,34 @@ const title = document.getElementById('qz-title')
 
 function sendQuiz() {
     let form = document.forms['saving']
-
+    
     getCreator(form)
-    numberSelection()
-    grouping()
-    return false
-    // return validateTitle()
+    numberofQ(form)
+    //shortForm(form)
+    return validateTitle()
 
+
+}
+
+function numberofQ(f){
+    let c = document.querySelectorAll(".card")
+    let num = document.createElement('input')
+    num.setAttribute('type', 'hidden')
+    num.setAttribute('name', 'count')
+    num.setAttribute('value',`${c.length}`)
+    f.appendChild(num)
+}
+
+function shortForm(f){
 
 }
 
 function delQuiz() {
 
     let form = document.forms['del']
-
-    getCreator(form)
+    
     let flag = validateTitle()
-
+    getCreator(form)
     if (flag === false) return false
     else {
         title.setAttribute('form', 'del')
@@ -36,13 +47,6 @@ function delQuiz() {
 
 }
 
-function numberSelection() {
-    let form = document.forms['saving']['qs-selection']
-    let i = 0;
-    for (i; i < form.length; i++) {
-        form[i].setAttribute('value', `${i}`)
-    }
-}
 
 
 
@@ -62,6 +66,7 @@ async function getCreator(f) {
             SIGNAL.setAttribute("value", 'saving')
         }
 
+        if(!f['creator']){
         CREATOR.setAttribute('type', 'hidden')
         CREATOR.setAttribute('name', 'creator')
         SIGNAL.setAttribute("type", 'hidden')
@@ -69,6 +74,8 @@ async function getCreator(f) {
         CREATOR.setAttribute('value', eID)
         f.appendChild(CREATOR)
         f.appendChild(SIGNAL)
+        }
+        
     })
 }
 
@@ -82,19 +89,7 @@ function validateTitle() {
 
 }
 
-function grouping() {
-    let form = document.forms['saving']['question']
-    let len = form.length
-    console.log("size of questions\n")
-    console.log(len)
-    console.log(question_parent)
 
-    let array = []
-    for (let i = 0; i < len; i++) {
-        let question_parent = form[0].parentNode
-        console.log(question_parent)
-    }
-}
 
 
 

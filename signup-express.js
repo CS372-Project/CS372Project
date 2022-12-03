@@ -21,7 +21,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log(`CONNECTED TO MONGO!`);
         app.listen(port);
-        console.log("listening on port 3000")
+        console.log(`listening on port ${port}`)
     })
     .catch((err) => {
         console.log(`OH NO! MONGO CONNECTION ERROR!`);
@@ -31,21 +31,13 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.static('HTML'));
 const User = require('./models/user');
-const Quiz = require('./models/quiz')
+const Quiz = require('./models/quiz');
 //const e = require('express');
 //HTML\createQuiz.html
 app.post("/HTML/createQuiz.html", function (req, res) {
-    console.log("got to the app")
-    if (req.body.signal === 'saving') {
-        console.log("saving to database")
-        console.log(req.body)
-    }
-    else {
-        console.log("deleting from database")
-        console.log(req.body)
-    }
-
-    return res.redirect("dashboard.html")
+    //regular expression for searching selections: selection[0-9]+$
+    let quiz = req.body
+    console.log(quiz)
 
 })
 

@@ -14,29 +14,29 @@ add_Question.addEventListener("click", add_card)
 
 
 
-function updateGroups(){
+function updateGroups() {
   let listOfCards = document.querySelectorAll(".card")
   let l = listOfCards.length
 
-  for(var i = 0; i < l; i++){
-     var groups = listOfCards[i].lastElementChild
-     var groups_selection = groups.children.item(1)
-     var groups_sel_length = groups_selection.children.length
-     //children are divs qs-selection that has the row in it
-      for(var j = 0; j < groups_sel_length; j++){
-        var div_length = groups_selection.children.length
-        var div = groups_selection.children.item(j)
-        
-        var div_radio = div.children.item(0)
-        div_radio.setAttribute("name", `group${i+1}`)
+  for (var i = 0; i < l; i++) {
+    var groups = listOfCards[i].lastElementChild
+    var groups_selection = groups.children.item(1)
+    var groups_sel_length = groups_selection.children.length
+    //children are divs qs-selection that has the row in it
+    for (var j = 0; j < groups_sel_length; j++) {
+      var div_length = groups_selection.children.length
+      var div = groups_selection.children.item(j)
 
-        //numbering radio buttons to get checked index in body
-        div_radio.setAttribute("value",j)
+      var div_radio = div.children.item(0)
+      div_radio.setAttribute("name", `group${i + 1}`)
 
-        var div_answer = div.children.item(1)
-        div_answer.setAttribute("name", `selection${i+1}`)
-      } // need to go through children of groups_selection in each rename inputs radio and text to card number (i)
-    
+      //numbering radio buttons to get checked index in body
+      div_radio.setAttribute("value", j)
+
+      var div_answer = div.children.item(1)
+      div_answer.setAttribute("name", `selection${i + 1}`)
+    } // need to go through children of groups_selection in each rename inputs radio and text to card number (i)
+
   }
 
 }
@@ -87,7 +87,7 @@ function add_card() {
     add_selection(q_selection_group)
   }
   let r = q_selection_group.children.item(0)
-  r.setAttribute("checked",'true')
+  r.setAttribute("checked", 'true')
 
   var q_add_selection = document.createElement("button")
   q_add_selection.className = "btn btn-add"
@@ -122,7 +122,6 @@ function add_selection(e) {
   var group;
   selection = document.createElement("div")
   selection.className = 'qs-selection'
-  //console.log(e.parentNode.children)
 
   check = document.createElement("input")
   check.type = "radio"
@@ -153,10 +152,9 @@ function add_selection(e) {
   else {
     x = e.parentNode.children
     group = x[1]
-     group.appendChild(selection)
+    group.appendChild(selection)
   }
   updateGroups()
-  console.log(group)
 }
 
 function delete_Card(e) {

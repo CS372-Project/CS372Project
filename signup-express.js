@@ -32,12 +32,39 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use(express.static('HTML'));
 const User = require('./models/user');
 const Quiz = require('./models/quiz');
-//const e = require('express');
-//HTML\createQuiz.html
+
 app.post("/HTML/createQuiz.html", function (req, res) {
-    //regular expression for searching selections: selection[0-9]+$
-    let quiz = req.body
-    console.log(quiz)
+
+    let quiz_body = req.body
+    let quiz = new Quiz()
+    if (quiz_body.signal === 'saving') {
+        quiz.title = quiz_body.title
+        for (let i = 0; i < quiz_body.count; i++) {
+            quiz.Questions[i] = {
+                question: quiz_body.question[i],
+                choices: quiz_body[`selection${i + 1}`],
+                correct: quiz_body[`group${i + 1}`],
+            }
+        }
+        quiz.creator = quiz_body.creator
+        quiz.save()
+            .then((user) => {
+                console.log(user)
+                res.redirect('dashboard.html');
+                res.end("")
+            }).catch((err) => {
+                console.log(err);
+                res.redirect('error.html')
+            })
+    }
+    else {
+        let filter = [{ title: `${quiz_body.title}` }, { creator: `${quiz_body.creator}` }]
+        Quiz.findOneAndDelete(filter, function (err, doc) {
+            if (err) console.log(err)
+            else console.log("Deleted Quiz: ", doc)
+        })
+        res.redirect("dashboard.html")
+    }
 
 })
 
@@ -88,8 +115,6 @@ app.post("/login", function (req, res) {
         }
         if (!user) {
             return res.redirect('error2.html');
-
-
         }
         else if (user) {
             return res.redirect('dashboard.html');
@@ -98,16 +123,6 @@ app.post("/login", function (req, res) {
 
 
 });
-
-
-
-
-// app.get("/createQuiz", (req, res) => {
-//     console.log("going to creaet through get request")
-//     res.redirect("createQuiz.html")
-// })
-
-
 
 
 app.get("/", function (req, res) {

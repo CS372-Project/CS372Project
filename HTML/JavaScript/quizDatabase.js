@@ -1,5 +1,4 @@
 
-
 const save = document.getElementById('saveQuiz')
 save.addEventListener('submit', sendQuiz)
 
@@ -11,32 +10,26 @@ const title = document.getElementById('qz-title')
 
 function sendQuiz() {
     let form = document.forms['saving']
-    
+
     getCreator(form)
     numberofQ(form)
-    //shortForm(form)
     return validateTitle()
-
-
 }
 
-function numberofQ(f){
+function numberofQ(f) {
     let c = document.querySelectorAll(".card")
     let num = document.createElement('input')
     num.setAttribute('type', 'hidden')
     num.setAttribute('name', 'count')
-    num.setAttribute('value',`${c.length}`)
+    num.setAttribute('value', `${c.length}`)
     f.appendChild(num)
 }
 
-function shortForm(f){
-
-}
 
 function delQuiz() {
 
     let form = document.forms['del']
-    
+
     let flag = validateTitle()
     getCreator(form)
     if (flag === false) return false
@@ -44,17 +37,13 @@ function delQuiz() {
         title.setAttribute('form', 'del')
     }
     return true
-
 }
-
-
 
 
 async function getCreator(f) {
     return new Promise(() => {
         let CREATOR = document.createElement('input')
         let SIGNAL = document.createElement('input')
-        console.log(f.id)
         if (f.id === "del") {
             CREATOR.setAttribute('form', 'del')
             SIGNAL.setAttribute("form", 'del')
@@ -66,16 +55,15 @@ async function getCreator(f) {
             SIGNAL.setAttribute("value", 'saving')
         }
 
-        if(!f['creator']){
-        CREATOR.setAttribute('type', 'hidden')
-        CREATOR.setAttribute('name', 'creator')
-        SIGNAL.setAttribute("type", 'hidden')
-        SIGNAL.setAttribute("name", 'signal')
-        CREATOR.setAttribute('value', eID)
-        f.appendChild(CREATOR)
-        f.appendChild(SIGNAL)
+        if (!f['creator']) {
+            CREATOR.setAttribute('type', 'hidden')
+            CREATOR.setAttribute('name', 'creator')
+            SIGNAL.setAttribute("type", 'hidden')
+            SIGNAL.setAttribute("name", 'signal')
+            CREATOR.setAttribute('value', eID)
+            f.appendChild(CREATOR)
+            f.appendChild(SIGNAL)
         }
-        
     })
 }
 

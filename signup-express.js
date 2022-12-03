@@ -149,4 +149,14 @@ app.get("/gameSetup", function (req, res) {
     });
     return res.redirect('gameSetup.html');
 
+
 });
+
+app.get("/play", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('play.html');
+
+});
+

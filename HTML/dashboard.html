@@ -38,10 +38,10 @@
 
 
     <script type="text/javascript" src="../HTML/JavaScript/dashboard.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
-<body>
+<body onload="getAllGameQuiz()">
 
     <div class="wrapper">
         <!-- Sidebar  -->
@@ -92,10 +92,10 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/HTML/createQuiz.html">Create Quiz</a>
+                                <a class="nav-link" href="createQuiz.html">Create Quiz</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Play Game Quiz</a>
+                                <a class="nav-link" href="play.html">Play Game Quiz</a>
                             </li>
 
                         </ul>
@@ -113,7 +113,9 @@
                     <i class="fas fa-search"></i>
                 </span>
             </div>
+            <div class = "gameQuiz" id="gameQuiz">
 
+            </div>
         </div>
     </div>
 

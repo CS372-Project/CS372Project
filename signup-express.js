@@ -21,7 +21,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log(`CONNECTED TO MONGO!`);
         app.listen(port);
-        console.log("listening on port 3000")
+        console.log("listening on port " + port);
     })
     .catch((err) => {
         console.log(`OH NO! MONGO CONNECTION ERROR!`);
@@ -185,3 +185,26 @@ app.post("/play", function (req, res) {
 
 });
 
+app.post("/dashboard", function (req, res) {
+    Quiz.find({}, function (err, quizes) {
+
+        if (err) {
+            console.log(err);
+        }
+        let games = [];
+        for (let index = 0; index < quizes.length; index++) {
+            const quiz = quizes[index];
+            games.push({title: quiz.title, link:"https://www.google.com/", creator:quiz.creator});//TODO
+            // games.push({title: quiz.title, link:"/quiz/"+quiz.ID, creator:quiz.creator});
+        }
+        return games;
+    })
+});
+
+app.get("/dashboard", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('dashboard.html');
+
+});

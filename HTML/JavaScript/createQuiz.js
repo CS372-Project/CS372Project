@@ -13,7 +13,36 @@ const add_Question = document.getElementById("add-question")
 add_Question.addEventListener("click", add_card)
 
 
-//adding selection row
+
+function updateGroups() {
+  let listOfCards = document.querySelectorAll(".card")
+  let l = listOfCards.length
+
+  for (var i = 0; i < l; i++) {
+    var groups = listOfCards[i].lastElementChild
+    var groups_selection = groups.children.item(1)
+    var groups_sel_length = groups_selection.children.length
+    //children are divs qs-selection that has the row in it
+    for (var j = 0; j < groups_sel_length; j++) {
+      var div_length = groups_selection.children.length
+      var div = groups_selection.children.item(j)
+
+      var div_radio = div.children.item(0)
+      div_radio.setAttribute("name", `group${i + 1}`)
+
+      //numbering radio buttons to get checked index in body
+      div_radio.setAttribute("value", j)
+
+      var div_answer = div.children.item(1)
+      div_answer.setAttribute("name", `selection${i + 1}`)
+    } // need to go through children of groups_selection in each rename inputs radio and text to card number (i)
+
+  }
+
+}
+
+
+
 function add_card() {
 
   //adds card container
@@ -49,14 +78,16 @@ function add_card() {
   var selection_header = document.createElement("h5")
   selection_header.innerText = "Answer Selection:"
 
-  //creates checkbox group
+  //creates radio group
   var q_selection_group = document.createElement("div")
-  q_selection_group.className = "form-check"
+  q_selection_group.className = "radio radio-group"
 
   //add default two selections to the card
   for (var i = 0; i < 2; i++) {
     add_selection(q_selection_group)
   }
+  let r = q_selection_group.children.item(0)
+  r.setAttribute("checked", 'true')
 
   var q_add_selection = document.createElement("button")
   q_add_selection.className = "btn btn-add"
@@ -77,8 +108,9 @@ function add_card() {
   q_card.appendChild(q_text_div)
   q_card.appendChild(q_body)
   container.insertBefore(q_card, add_Question)
-
+  updateGroups()
 }
+
 
 function add_selection(e) {
   var selection
@@ -90,11 +122,10 @@ function add_selection(e) {
   var group;
   selection = document.createElement("div")
   selection.className = 'qs-selection'
-  //console.log(e.parentNode.children)
-
   check = document.createElement("input")
-  check.type = "checkbox"
-  check.name = `qs-selection`
+  check.type = "radio"
+  check.name = 'group'
+
   check.setAttribute("form", "saving")
 
   input = document.createElement("input")
@@ -115,7 +146,8 @@ function add_selection(e) {
   selection.appendChild(btn)
 
   //  checks where the call is coming from
-  if (e.className === "form-check") {
+  if (e.className === "radio radio-group") {
+
     e.appendChild(selection)
   }
   else {
@@ -123,7 +155,7 @@ function add_selection(e) {
     group = x[1]
     group.appendChild(selection)
   }
-
+  updateGroups()
 }
 
 function delete_Card(e) {

@@ -187,17 +187,17 @@ app.post("/play", function (req, res) {
 
 app.post("/dashboard", function (req, res) {
     Quiz.find({}, function (err, quizes) {
-
+        console.log(quizes)
         if (err) {
             console.log(err);
         }
         let games = [];
         for (let index = 0; index < quizes.length; index++) {
             const quiz = quizes[index];
-            games.push({title: quiz.title, link:"https://www.google.com/", creator:quiz.creator});//TODO
+            games.push({title: quiz.title, creator:quiz.creator});//TODO
             // games.push({title: quiz.title, link:"/quiz/"+quiz.ID, creator:quiz.creator});
         }
-        return games;
+        return res.json(games);
     })
 });
 

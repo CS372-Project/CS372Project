@@ -21,7 +21,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log(`CONNECTED TO MONGO!`);
         app.listen(port);
-        console.log("listening on port 3000")
+        console.log(`listening on port ${port}`)
     })
     .catch((err) => {
         console.log(`OH NO! MONGO CONNECTION ERROR!`);
@@ -31,22 +31,41 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(express.static('HTML'));
 const User = require('./models/user');
-
 const Quiz = require('./models/quiz');
-//const e = require('express');
-//HTML\createQuiz.html
+
 app.post("/HTML/createQuiz.html", function (req, res) {
-    console.log("got to the app")
-    if (req.body.signal === 'saving') {
-        console.log("saving to database")
-        console.log(req.body)
+
+    let quiz_body = req.body
+    let quiz = new Quiz()
+    if (quiz_body.signal === 'saving') {
+        quiz.title = quiz_body.title
+        for (let i = 0; i < quiz_body.count; i++) {
+            quiz.Questions[i] = {
+                question: quiz_body.question[i],
+                choices: quiz_body[`selection${i + 1}`],
+                correct: quiz_body[`group${i + 1}`],
+            }
+        }
+        quiz.creator = quiz_body.creator
+        quiz.save()
+            .then((user) => {
+                console.log(user)
+                res.redirect('dashboard.html');
+                res.end("")
+            }).catch((err) => {
+                console.log(err);
+                res.redirect('error.html')
+            })
     }
     else {
-        console.log("deleting from database")
-        console.log(req.body)
-    }
+        let filter = { title: `${quiz_body.title}`, creator: `${quiz_body.creator}` }
+        Quiz.findOneAndDelete(filter, function (err, doc) {
+            if (err) console.log(err)
+            else console.log("Deleted Quiz: ", doc)
+            res.redirect("dashboard.html")
+        })
 
-    return res.redirect("dashboard.html")
+    }
 
 })
 
@@ -97,8 +116,6 @@ app.post("/login", function (req, res) {
         }
         if (!user) {
             return res.redirect('error2.html');
-
-
         }
         else if (user) {
             return res.redirect('dashboard.html');
@@ -107,16 +124,6 @@ app.post("/login", function (req, res) {
 
 
 });
-
-
-
-
-// app.get("/createQuiz", (req, res) => {
-//     console.log("going to creaet through get request")
-//     res.redirect("createQuiz.html")
-// })
-
-
 
 
 app.get("/", function (req, res) {
@@ -144,6 +151,7 @@ app.get("/login", function (req, res) {
 
 });
 
+
 app.get("/gameSetup", function (req, res) {
     res.set({
         'Access-control-Allow-Origin': '*'
@@ -163,19 +171,19 @@ app.get("/play", function (req, res) {
 
 app.post("/play", function (req, res) {
     var title = req.body.title;
- 
+
     console.log(title);
 
-    Quiz.findOne({ title: title}, function (err, quiz) {
+    Quiz.findOne({ title: title }, function (err, quiz) {
 
         if (err) {
             console.log(err);
 
         }
         if (!quiz) {
-          
+
             return res.redirect('play.html');
-            
+
 
         }
         else if (quiz) {
@@ -184,4 +192,3 @@ app.post("/play", function (req, res) {
     })
 
 });
-

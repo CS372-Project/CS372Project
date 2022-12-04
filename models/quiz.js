@@ -9,15 +9,17 @@ const quizSchema = new Schema({
     },
     Questions: [{
         question: { type: String },
-        choices: [{ type: String }],
+        choices: {type: [String]},
         correct: { type: String }
     }],
     creator: {
         type: String,
         required: true
     }
-
-}, { timestamps: true })
+}, 
+{ timestamps: true },
+{collection: 'quizzes'}
+)
 
 const Quiz = mongoose.model('Quiz', quizSchema);
 module.exports = Quiz;

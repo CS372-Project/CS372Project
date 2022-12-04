@@ -40,7 +40,8 @@
     <div class="container-fluid">
         <div class="input input-text">
             <!--may need rewriting for data storage with javascsript-->
-            <input form="saving" type="text" name="qz-title" id="qz-title" placeholder="#Quiz Title" />
+            <input form="saving" type="text" name="title" id="qz-title" placeholder="#Quiz Title" />
+
         </div>
         <div class="container">
             <!--Where the cards are presented, javascript functionality to add more-->
@@ -54,16 +55,18 @@
 
                 <div class="card-body">
                     <h5>Answer Selection:</h5>
-                    <div class="form-check">
+                    <div class="radio radio-group">
+                        <!-- <div class="form-check"> -->
                         <div class="qs-selection">
-                            <input type="checkbox" form="saving" name="qs-selection" /><input form="saving"
-                                name="selection" type="textarea" class="answer" />
+                            <!-- <input type="checkbox" form="saving" name="qs-selection" /> -->
+                            <input type="radio" form="saving" name="group1" value="0" checked="true"><input
+                                form="saving" name="selection1" type="textarea" class="answer" />
                             <button class="btn btn-delete select" onclick="delete_selection(this)"><i
                                     class="bi bi-x"></i></button>
                         </div>
                         <div class="qs-selection">
-                            <input type="checkbox" form="saving" name="qs-selection" /><input form="saving"
-                                name="selection" type="textarea" class="answer" />
+                            <input type="radio" form="saving" name="group1" value="1" /><input form="saving"
+                                name="selection1" type="textarea" class="answer" />
                             <button class="btn btn-delete select" onclick="delete_selection(this)"><i
                                     class="bi bi-x"></i></button>
                         </div>

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node signup-express.js",
-    "test": "mocha ./test --recursive --timeout 15000 --exit"
+    "test": "npm install -g mocha; mocha ./test --recursive --timeout 15000 --exit"
   },
   "repository": {
     "type": "git",

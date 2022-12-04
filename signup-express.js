@@ -192,3 +192,27 @@ app.post("/play", function (req, res) {
     })
 
 });
+
+app.post("/dashboard", function (req, res) {
+    Quiz.find({}, function (err, quizes) {
+        console.log(quizes)
+        if (err) {
+            console.log(err);
+        }
+        let games = [];
+        for (let index = 0; index < quizes.length; index++) {
+            const quiz = quizes[index];
+            games.push({title: quiz.title, creator:quiz.creator});//TODO
+            // games.push({title: quiz.title, link:"/quiz/"+quiz.ID, creator:quiz.creator});
+        }
+        return res.json(games);
+    })
+});
+
+app.get("/dashboard", function (req, res) {
+    res.set({
+        'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect('dashboard.html');
+
+});

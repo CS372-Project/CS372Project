@@ -42,7 +42,7 @@ function updateGroups() {
 }
 
 
-//adding selection row
+
 function add_card() {
 
   //adds card container
@@ -78,9 +78,9 @@ function add_card() {
   var selection_header = document.createElement("h5")
   selection_header.innerText = "Answer Selection:"
 
-  //creates checkbox group
+  //creates radio group
   var q_selection_group = document.createElement("div")
-  q_selection_group.className = "form-check"
+  q_selection_group.className = "radio radio-group"
 
   //add default two selections to the card
   for (var i = 0; i < 2; i++) {
@@ -124,7 +124,7 @@ function add_selection(e) {
   selection.className = 'qs-selection'
   check = document.createElement("input")
   check.type = "radio"
-  check.name = `group`
+  check.name = 'group'
 
   check.setAttribute("form", "saving")
 

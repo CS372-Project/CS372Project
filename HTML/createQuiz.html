@@ -56,17 +56,18 @@
                 <div class="card-body">
                     <h5>Answer Selection:</h5>
                     <div class="radio radio-group">
-                    <!-- <div class="form-check"> -->
+                        <!-- <div class="form-check"> -->
                         <div class="qs-selection">
                             <!-- <input type="checkbox" form="saving" name="qs-selection" /> -->
-                            <input type="radio" form="saving" name="group1" value="0" checked="true"><input form="saving" name="selection1" type="textarea" class="answer" />
+                            <input type="radio" form="saving" name="group1" value="0" checked="true"><input
+                                form="saving" name="selection1" type="textarea" class="answer" />
                             <button class="btn btn-delete select" onclick="delete_selection(this)"><i
                                     class="bi bi-x"></i></button>
                         </div>
                         <div class="qs-selection">
-                            <input type="radio" form="saving" name="group1" value="1"/><input form="saving"
+                            <input type="radio" form="saving" name="group1" value="1" /><input form="saving"
                                 name="selection1" type="textarea" class="answer" />
-               <button class="btn btn-delete select" onclick="delete_selection(this)"><i
+                            <button class="btn btn-delete select" onclick="delete_selection(this)"><i
                                     class="bi bi-x"></i></button>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
                     </button>
                 </div>
             </div>
-            <button class="btn btn-add-card" id="add-question">
+            <button class="btn btn-add-card" id="add-question" onclick="add_card()">
                 <i class="bi bi-plus-circle"></i> Add Question
                 <!--javascript: to create a question card with the same default structure-->
             </button>

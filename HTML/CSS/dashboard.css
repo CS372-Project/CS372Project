@@ -110,7 +110,9 @@ span {
 }
 
 img {
-    max-width:100%;
+    margin-left: 20px;
+    margin-right: 10px;
+    max-width:50%;
 }
 
 
@@ -223,4 +225,19 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+#gameQuiz div{
+    margin-top: 10px;
+    margin-left: 10px;
+    border:  1px solid rgb(0, 0, 0);
+}
+
+#gameQuiz a{
+    font-size: 20px;
+}
+
+#gameQuiz h4{
+    margin-right: 7px;
+    text-align: right;
 }

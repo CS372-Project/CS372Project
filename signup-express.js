@@ -33,7 +33,7 @@ app.use(express.static('HTML'));
 const User = require('./models/user');
 const Quiz = require('./models/quiz');
 
-app.post("/HTML/createQuiz.html", function (req, res) {
+app.post("/createQuiz.html", function (req, res) {
 
     let quiz_body = req.body
     let quiz = new Quiz()

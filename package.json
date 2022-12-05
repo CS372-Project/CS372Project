@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node signup-express.js",
-    "test": "npm install -g mocha; mocha ./test --recursive --timeout 15000 --exit"
+    "test": "mocha ./test --recursive --timeout 15000 --exit"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,8 @@
     "express": "4.18.2",
     "fast-xml-parser": "^4.0.11",
     "finalhandler": "^1.2.0",
+    "form-parse": "0.1.0",
+    "formidable": "2.1.1",
     "forwarded": "^0.2.0",
     "fresh": "^0.5.2",
     "function-bind": "^1.1.1",
@@ -107,8 +109,6 @@
     "uuid": "^8.3.2",
     "vary": "^1.1.2",
     "webidl-conversions": "^7.0.0",
-    "whatwg-url": "^11.0.0",
-    "escape-html": "^1.0.3"
-  },
-  "devDependencies": {}
+    "whatwg-url": "^11.0.0"
+  }
 }
